@@ -48,7 +48,7 @@ const LandingWrapper = styled.div`
 
 const LandingContainer = styled.div`
   display: flex;
-  width: 80%;
+  width: 70%;
   height: 100%;
 
   @media (max-width: 496px) {
@@ -69,7 +69,7 @@ const Heading = styled.h3`
   font-size: 50px;
   color: white;
   font-weight: 400;
-  padding: 0 30% 0 70px;
+  padding: 0 30% 0 0;
   letter-spacing: 2px;
 
   span {
@@ -94,7 +94,7 @@ const LandingRight = styled.div`
 
   img {
     width: 90%;
-    margin-top: 30%;
+    margin-top: 40%;
     border-radius: 20px;
   }
 
@@ -112,7 +112,7 @@ const PrimaryButton = styled.button`
   background-color: #43afff;
   color: white;
   border: none;
-  margin: 0 0 0 70px;
+  ${'' /* margin: 0 0 0 0px; */}
   justify-content: center;
   align-items: center;
   font-size: 17px;
