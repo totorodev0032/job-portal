@@ -35,6 +35,7 @@ const HeaderContainer = styled.div`
   width: 80%;
   height: 100%;
   align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
 `;
 
 const Heading = styled.h3`

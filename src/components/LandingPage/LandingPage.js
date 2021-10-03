@@ -32,7 +32,7 @@ export default LandingPage;
 const LandingWrapper = styled.div`
   display: flex;
   width: 100%;
-  height: 60vh;
+  height: 50vh;
   justify-content: center;
   align-items: center;
   background: linear-gradient(
