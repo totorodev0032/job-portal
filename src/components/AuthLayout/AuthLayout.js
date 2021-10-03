@@ -1,11 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
+import Login from '../Login/Login';
 
 const AuthLayout = () => {
   return (
     <>
       <AuthLayoutWrapper>
-        <AuthLayoutContainer></AuthLayoutContainer>
+        <AuthLayoutContainer>
+          <Login />
+        </AuthLayoutContainer>
       </AuthLayoutWrapper>
       <AuthLayoutBottom></AuthLayoutBottom>
     </>
