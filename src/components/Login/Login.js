@@ -59,6 +59,10 @@ const Login = () => {
               placeholder="Enter Your Email"
               onChange={(event) => setUserEmail(event.target.value)}
             />
+            {errors.emailError ? (
+              <ErrorText>{errors.emailError}</ErrorText>
+            ) : null}
+            {/* <ErrorText>This field is mandatory</ErrorText> */}
 
             <label>Password</label>
             <input
@@ -67,6 +71,9 @@ const Login = () => {
               placeholder="Enter Your Password"
               onChange={(event) => setUserPassword(event.target.value)}
             />
+            {errors.passwordError ? (
+              <ErrorText>{errors.passwordError}</ErrorText>
+            ) : null}
 
             <ButtonWrapper>
               <Button type="submit">Login</Button>
@@ -83,7 +90,7 @@ export default Login;
 const LoginWrapper = styled.div`
   display: flex;
   width: 500px;
-  height: 427px;
+  height: 400px;
   background-color: #ffffff;
   box-shadow: 0px 30px 36px #557da526;
   border-radius: 20px;
@@ -97,12 +104,14 @@ const LoginContainer = styled.div`
   width: 90%;
   height: 90%;
   flex-direction: column;
+  margin-top: 20px;
 `;
 
 const LoginHeader = styled.h3`
   font-size: 22px;
   color: #303f60;
   font-weight: 500;
+  margin-bottom: 15px;
 `;
 
 const FormContainer = styled.form`
@@ -123,7 +132,7 @@ const FormContainer = styled.form`
     border: 1px solid #c6c6c6;
     border-radius: 5px;
     padding: 0 0 0 10px;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
   }
 
   input:focus {
@@ -154,4 +163,11 @@ const Button = styled.button`
   border-radius: 5px;
   margin-top: 10px;
   cursor: pointer;
+`;
+
+const ErrorText = styled.p`
+  font-size: 13px;
+  font-weight: 400;
+  margin: -10px 0 5px auto;
+  color: red;
 `;

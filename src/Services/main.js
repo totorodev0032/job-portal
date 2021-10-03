@@ -41,3 +41,25 @@ export const getPostedJobs = (value) => {
       });
   });
 };
+
+export const getOneJobApplicants = (value, token) => {
+  return new Promise((resolve, reject) => {
+    fetch(BASEURL + '/recruiters/jobs/' + value + '/candidates', {
+      method: 'GET',
+      headers: {
+        Authorization: token,
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (!data.success) {
+          reject(data.message);
+        } else {
+          resolve(data);
+        }
+      })
+      .catch((error) => {
+        reject(error);
+      });
+  });
+};
