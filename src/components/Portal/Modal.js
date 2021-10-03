@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDom from 'react-dom';
+import ApplicantsCard from '../Applicants/ApplicantsCard';
 import styles from './modal.module.css';
 
 function Modal({ open, children, onClose }) {
@@ -10,7 +11,7 @@ function Modal({ open, children, onClose }) {
       <div className={styles.Overlay_Styles} />
       <div className={styles.Modal_Styles}>
         {/* <LoginModal onClose={onClose} /> */}
-        helo
+        <ApplicantsCard />
       </div>
     </>,
     document.getElementById('portal')
