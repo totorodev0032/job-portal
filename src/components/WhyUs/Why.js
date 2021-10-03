@@ -79,7 +79,7 @@ const CardContainer = styled.div`
 const Card = styled.div`
   display: flex;
   flex-direction: column;
-  width: 341px;
+  width: 330px;
   height: 192px;
   background-color: #ffffff;
   margin-right: 20px;
