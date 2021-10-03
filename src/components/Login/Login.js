@@ -1,21 +1,75 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useHistory } from 'react-router';
 import styled from 'styled-components';
+import { login } from '../../Services/main';
+import { isEmpty } from 'lodash';
 
 const Login = () => {
+  const [userEmail, setUserEmail] = React.useState('');
+  const [userPassword, setUserPassword] = React.useState('');
+  const history = useHistory();
+  const [errors, setError] = React.useState({
+    emailError: '',
+    passwordError: '',
+  });
+  const userData = JSON.parse(sessionStorage.getItem('userData'));
+  if (userData) {
+    history.push('/dashboard');
+  }
+  const handleSubmit = (event) => {
+    var loginData = {
+      email: userEmail,
+      password: userPassword,
+    };
+    const errorObj = {};
+    if (!userEmail) {
+      errorObj.emailError = 'Email is required';
+    } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(userEmail)) {
+      errorObj.emailError = 'Invalid Email Address';
+    }
+    if (!userPassword) {
+      errorObj.passwordError = 'Password is required';
+    } else if (!/^[A-Z0-9._%+-]{6,}$/i.test(userPassword)) {
+      errorObj.passwordError = 'Password should be more than 6 letters';
+    }
+    if (isEmpty(errorObj)) {
+      login(loginData)
+        .then((data) => {
+          alert('success');
+          sessionStorage.setItem('userData', JSON.stringify(data.data));
+          history.push('/dashboard');
+        })
+        .catch((error) => {
+          alert(error);
+        });
+    }
+    setError(errorObj);
+    event.preventDefault();
+  };
   return (
     <>
       <LoginWrapper>
         <LoginContainer>
           <LoginHeader>Log In</LoginHeader>
-          <FormContainer>
+          <FormContainer onSubmit={handleSubmit}>
             <label>Email</label>
-            <input type="email" placeholder="Enter Your Email" />
+            <input
+              type="email"
+              value={userEmail}
+              placeholder="Enter Your Email"
+              onChange={(event) => setUserEmail(event.target.value)}
+            />
 
             <label>Password</label>
-            <input type="password" placeholder="Enter Your Password" />
+            <input
+              type="password"
+              value={userPassword}
+              placeholder="Enter Your Password"
+              onChange={(event) => setUserPassword(event.target.value)}
+            />
 
             <ButtonWrapper>
-              <Button>Login</Button>
+              <Button type="submit">Login</Button>
             </ButtonWrapper>
           </FormContainer>
         </LoginContainer>
@@ -99,4 +153,5 @@ const Button = styled.button`
   font-weight: 500;
   border-radius: 5px;
   margin-top: 10px;
+  cursor: pointer;
 `;

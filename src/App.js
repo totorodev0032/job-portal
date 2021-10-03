@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import AuthLayout from './components/AuthLayout/AuthLayout';
+import Dashboard from './components/Dashboard/Dashboard';
 import Header from './components/Header/Header';
 import LandingPage from './components/LandingPage/LandingPage';
 import Why from './components/WhyUs/Why';
@@ -18,6 +19,10 @@ function App() {
           <Route path="/login">
             <Header />
             <AuthLayout />
+          </Route>
+
+          <Route path="/dashboard">
+            <Dashboard />
           </Route>
         </Switch>
       </Router>
