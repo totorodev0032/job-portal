@@ -26,6 +26,11 @@ function App() {
             <AuthLayout value="Register" />
           </Route>
 
+          <Route path="/resetPassword">
+            <Header />
+            <AuthLayout value="Reset" />
+          </Route>
+
           <Route path="/dashboard">
             <Dashboard />
           </Route>

@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Login from '../Login/Login';
 import Register from '../Register/Register';
+import UserEmail from '../ResetPassword/UserEmail';
 
 const AuthLayout = ({ value }) => {
   return (
@@ -12,6 +13,8 @@ const AuthLayout = ({ value }) => {
             <Login />
           ) : value == 'Register' ? (
             <Register />
+          ) : value == 'Reset' ? (
+            <UserEmail />
           ) : null}
         </AuthLayoutContainer>
       </AuthLayoutWrapper>
