@@ -4,8 +4,10 @@ import { isEmpty } from 'lodash';
 import { login } from '../../Services/main';
 import styled from 'styled-components';
 
-const UserEmail = () => {
-  const [userEmail, setUserEmail] = React.useState('');
+const ResetPassword = () => {
+  const [userPassword, setUserPassword] = React.useState('');
+  const [userConfirmPassword, setUserConfirmPassword] = React.useState('');
+
   const history = useHistory();
   const [errors, setError] = React.useState({
     emailError: '',
@@ -17,13 +19,12 @@ const UserEmail = () => {
   }
   const handleSubmit = (event) => {
     var loginData = {
-      email: userEmail,
+      password: userPassword,
+      confirmPassword: userConfirmPassword,
     };
     const errorObj = {};
-    if (!userEmail) {
-      errorObj.emailError = 'Email is required';
-    } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(userEmail)) {
-      errorObj.emailError = 'Invalid Email Address';
+    if (!userPassword) {
+      errorObj.emailError = 'Password is required';
     }
 
     if (isEmpty(errorObj)) {
@@ -44,20 +45,26 @@ const UserEmail = () => {
     <>
       <ResetWrapper>
         <ResetContainer>
-          <ResetHeader>Forgot Your Password</ResetHeader>
+          <ResetHeader>Reset Your Password</ResetHeader>
           <FormContainer onSubmit={handleSubmit}>
-            <label>Email</label>
+            <label>Password</label>
             <input
-              type="email"
-              value={userEmail}
+              type="password"
+              value={userPassword}
               placeholder="Enter Your Email"
-              onChange={(event) => setUserEmail(event.target.value)}
+              onChange={(event) => setUserPassword(event.target.value)}
             />
             {errors.emailError ? (
               <ErrorText>{errors.emailError}</ErrorText>
             ) : null}
             {/* <ErrorText>This field is mandatory</ErrorText> */}
-
+            <label>Confirm Password</label>
+            <input
+              type="password"
+              value={userConfirmPassword}
+              placeholder="Enter Your Email"
+              onChange={(event) => setUserConfirmPassword(event.target.value)}
+            />
             <ButtonWrapper>
               <Button type="submit">Submit</Button>
             </ButtonWrapper>
@@ -68,12 +75,12 @@ const UserEmail = () => {
   );
 };
 
-export default UserEmail;
+export default ResetPassword;
 
 const ResetWrapper = styled.div`
   display: flex;
   width: 500px;
-  height: 300px;
+  height: 400px;
   background-color: #ffffff;
   box-shadow: 0px 30px 36px #557da526;
   border-radius: 20px;
