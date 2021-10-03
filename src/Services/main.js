@@ -23,3 +23,21 @@ export const login = (value) => {
       });
   });
 };
+
+export const getPostedJobs = (value) => {
+  return new Promise((resolve, reject) => {
+    fetch(BASEURL + '/recruiters/jobs', {
+      method: 'GET',
+      headers: {
+        Authorization: value,
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        resolve(data);
+      })
+      .catch((error) => {
+        reject(error);
+      });
+  });
+};

@@ -1,21 +1,20 @@
 import React from 'react';
 import styled from 'styled-components';
+import Portal from '../Portal/Portal';
 
-const JobBox = () => {
+const JobBox = ({ title, description, location }) => {
   return (
     <>
       <JobCard>
-        <h3 className="title">UI/UX Designer</h3>
-        <p className="description">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt…
-        </p>
+        <h3 className="title"> {title} </h3>
+        <p className="description">{description}</p>
         <CardFooter>
           <p>
             {/* <GrIcons.GrLocation /> */}
-            location
+            {location}
           </p>
-          <button className="btn">View Applications</button>
+          {/* <button className="btn">View Applications</button> */}
+          <Portal />
         </CardFooter>
       </JobCard>
     </>

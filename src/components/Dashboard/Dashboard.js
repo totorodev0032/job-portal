@@ -1,10 +1,33 @@
-import React from 'react';
-// import * as GrIcons from 'react-icons/gr';
+import React, { useState } from 'react';
+import { getPostedJobs } from '../../Services/main';
 import styled from 'styled-components';
 import Header from '../Header/Header';
 import JobBox from '../JobsCard/JobCard';
 
 const Dashboard = () => {
+  // const [show, setShow] = React.useState(false);
+  //   const handleClose = () => setShow(false);
+  const userData = JSON.parse(sessionStorage.getItem('userData'));
+  const [jobsData, setJobsData] = React.useState({
+    data: [],
+    message: 'Your posted jobs will show here!',
+  });
+  const [applicantData, setApplicantData] = React.useState({
+    data: [],
+    message: 'No Applicants',
+  });
+  React.useEffect(() => {
+    getPostedJobs(userData.token)
+      .then((data) => {
+        if (!data.message) {
+          console.log(data.data);
+          setJobsData(data.data);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, [userData.token]);
   return (
     <>
       <Header />
@@ -16,8 +39,13 @@ const Dashboard = () => {
 
       <JobCardWrapper>
         <JobCardContainer>
-          <JobBox />
-          <JobBox />
+          {jobsData.data.map((job) => (
+            <JobBox
+              title={job.title}
+              description={job.description}
+              location={job.location}
+            />
+          ))}
         </JobCardContainer>
       </JobCardWrapper>
     </>
