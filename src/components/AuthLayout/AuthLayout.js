@@ -1,13 +1,18 @@
 import React from 'react';
 import styled from 'styled-components';
 import Login from '../Login/Login';
+import Register from '../Register/Register';
 
-const AuthLayout = () => {
+const AuthLayout = ({ value }) => {
   return (
     <>
       <AuthLayoutWrapper>
         <AuthLayoutContainer>
-          <Login />
+          {value == 'Login' ? (
+            <Login />
+          ) : value == 'Register' ? (
+            <Register />
+          ) : null}
         </AuthLayoutContainer>
       </AuthLayoutWrapper>
       <AuthLayoutBottom></AuthLayoutBottom>

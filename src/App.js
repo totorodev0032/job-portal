@@ -18,7 +18,12 @@ function App() {
 
           <Route path="/login">
             <Header />
-            <AuthLayout />
+            <AuthLayout value="Login" />
+          </Route>
+
+          <Route path="/register">
+            <Header />
+            <AuthLayout value="Register" />
           </Route>
 
           <Route path="/dashboard">
