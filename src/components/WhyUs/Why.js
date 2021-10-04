@@ -58,6 +58,7 @@ const WhyContainer = styled.div`
   flex-direction: column;
   width: 70%;
   height: 80%;
+  margin-top: 10%;
 
   @media (max-width: 496px) {
     padding-bottom: 5%;
@@ -68,6 +69,7 @@ const Heading = styled.h3`
   font-size: 27px;
   font-weight: 500;
   color: #303f60;
+  margin-bottom: 20px;
 `;
 
 const CardContainer = styled.div`
@@ -96,6 +98,7 @@ const CardHeading = styled.h3`
   color: #43afff;
   font-weight: 500;
   padding: 0 50% 0 20px;
+  margin-top: 20px;
 `;
 
 const Description = styled.p`

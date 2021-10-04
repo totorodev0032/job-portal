@@ -93,8 +93,8 @@ const LandingRight = styled.div`
   align-items: center;
 
   img {
-    width: 90%;
-    margin-top: 40%;
+    width: 100%;
+    margin-top: 30%;
     border-radius: 20px;
   }
 
@@ -118,6 +118,7 @@ const PrimaryButton = styled.button`
   font-size: 17px;
   border-radius: 5px;
   cursor: pointer;
+  margin-top: 10%;
 
   @media (max-width: 496px) {
     margin: 0 10% 0 20px;
