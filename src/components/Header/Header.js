@@ -8,7 +8,7 @@ const Header = () => {
     <>
       <HeaderWrapper>
         <HeaderContainer>
-          <Link to="/" className="link">
+          <Link to={userData ? '/dashboard' : '/'} className="link">
             <Heading>
               My<span className="blue">Jobs</span>
             </Heading>
