@@ -3,6 +3,7 @@ import { useHistory } from 'react-router';
 import { isEmpty } from 'lodash';
 import { postJob } from '../../Services/main';
 import styled from 'styled-components';
+import '../../index.css';
 
 const PostJob = () => {
   const [jobTitle, setJobTitle] = React.useState('');
@@ -11,8 +12,7 @@ const PostJob = () => {
 
   const history = useHistory();
   const [errors, setError] = React.useState({
-    emailError: '',
-    passwordError: '',
+    error: '',
   });
   const userData = JSON.parse(sessionStorage.getItem('userData'));
 
@@ -23,16 +23,16 @@ const PostJob = () => {
       location: location,
     };
     const errorObj = {};
-    // if (!userEmail) {
-    //   errorObj.emailError = 'Email is required';
-    // } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(userEmail)) {
-    //   errorObj.emailError = 'Invalid Email Address';
-    // }
-    // if (!userPassword) {
-    //   errorObj.passwordError = 'Password is required';
-    // } else if (!/^[A-Z0-9._%+-]{6,}$/i.test(userPassword)) {
-    //   errorObj.passwordError = 'Password should be more than 6 letters';
-    // }
+    if (!jobTitle) {
+      errorObj.titleError = 'All fields are required';
+    }
+    if (!jobDescription) {
+      errorObj.descriptionError = 'All fields are required';
+    }
+
+    if (!location) {
+      errorObj.locationError = 'All fields are required';
+    }
     if (isEmpty(errorObj)) {
       postJob(jobData, userData.token)
         .then((data) => {
@@ -54,6 +54,7 @@ const PostJob = () => {
           <FormContainer onSubmit={handleSubmit}>
             <label>Job Title</label>
             <input
+              className={errors.titleError ? 'error' : null}
               type="text"
               value={jobTitle}
               placeholder="Enter Your Email"
@@ -62,6 +63,7 @@ const PostJob = () => {
 
             <label>Job Description</label>
             <textarea
+              className={errors.descriptionError ? 'error' : null}
               type="text"
               value={jobDescription}
               placeholder="Enter Description"
@@ -70,14 +72,22 @@ const PostJob = () => {
 
             <label>Job Location</label>
             <input
+              className={errors.locationError ? 'error' : null}
               type="text"
               value={location}
               placeholder="Enter Your Email"
               onChange={(event) => setLocation(event.target.value)}
             />
+            {errors.descriptionError ? (
+              <ErrorText>{errors.descriptionError}</ErrorText>
+            ) : errors.titleError ? (
+              <ErrorText>{errors.titleError}</ErrorText>
+            ) : errors.locationError ? (
+              <ErrorText>{errors.locationError}</ErrorText>
+            ) : null}
 
             <ButtonWrapper>
-              <Button type="submit">Login</Button>
+              <Button type="submit">Submit</Button>
             </ButtonWrapper>
           </FormContainer>
         </PostJobContainer>
@@ -91,7 +101,7 @@ export default PostJob;
 const PostJobWrapper = styled.div`
   display: flex;
   width: 500px;
-  height: 400px;
+  height: 500px;
   background-color: #ffffff;
   box-shadow: 0px 30px 36px #557da526;
   border-radius: 20px;

@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { login } from '../../Services/main';
 import { isEmpty } from 'lodash';
 import { Link } from 'react-router-dom';
+import '../../index.css';
 
 const Login = () => {
   const [userEmail, setUserEmail] = React.useState('');
@@ -55,6 +56,7 @@ const Login = () => {
           <FormContainer onSubmit={handleSubmit}>
             <label>Email</label>
             <input
+              className={errors.emailError ? 'error' : null}
               type="email"
               value={userEmail}
               placeholder="Enter Your Email"
@@ -67,6 +69,7 @@ const Login = () => {
 
             <label>Password</label>
             <input
+              className={errors.passwordError ? 'error' : null}
               type="password"
               value={userPassword}
               placeholder="Enter Your Password"

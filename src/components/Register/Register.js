@@ -4,6 +4,7 @@ import { isEmpty } from 'lodash';
 import { register } from '../../Services/main';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import '../../index.css';
 
 const Register = () => {
   const [userRole, setUserRole] = React.useState(0);
@@ -76,6 +77,7 @@ const Register = () => {
           <FormContainer onSubmit={handleSubmit}>
             <label>Full Name</label>
             <input
+              className={errors.nameError ? 'error' : null}
               type="text"
               value={userName}
               placeholder="Enter Your Full Name"
@@ -87,6 +89,7 @@ const Register = () => {
 
             <label>Email</label>
             <input
+              className={errors.emailError ? 'error' : null}
               type="email"
               value={userEmail}
               placeholder="Enter Your Email"
@@ -100,6 +103,7 @@ const Register = () => {
               <Left>
                 <label>Password</label>
                 <input
+                  className={errors.passwordError ? 'error' : null}
                   type="password"
                   value={userPassword}
                   placeholder="Enter Your Password"
@@ -113,6 +117,7 @@ const Register = () => {
               <Right>
                 <label>Confirm Password</label>
                 <input
+                  className={errors.confirmPasswordError ? 'error' : null}
                   type="password"
                   value={confirmPassword}
                   placeholder="Confirm Your Password"

@@ -1,8 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-
+import { FaUserCircle } from 'react-icons/fa';
 const Header = () => {
+  const userData = JSON.parse(sessionStorage.getItem('userData'));
   return (
     <>
       <HeaderWrapper>
@@ -12,9 +13,17 @@ const Header = () => {
               My<span className="blue">Jobs</span>
             </Heading>
           </Link>
-          <Link to="/register" className="link">
-            <LoginButton>Login/Signup</LoginButton>
-          </Link>
+
+          {userData ? (
+            <RightDiv>
+              <Link to="/postjob" className="link">
+                <p>Post a Job</p>
+              </Link>
+              <FaUserCircle style={{ color: 'white', fontSize: '30px' }} />
+            </RightDiv>
+          ) : (
+            <Button>Login/Signup</Button>
+          )}
         </HeaderContainer>
       </HeaderWrapper>
     </>
@@ -65,7 +74,7 @@ const Heading = styled.h3`
   }
 `;
 
-const LoginButton = styled.button`
+const Button = styled.button`
   display: flex;
   border: 1px solid #43afff;
   width: 150px;
@@ -77,4 +86,16 @@ const LoginButton = styled.button`
   align-items: center;
   border-radius: 5px;
   cursor: pointer;
+`;
+
+const RightDiv = styled.div`
+  display: flex;
+  width: 15%;
+  justify-content: space-between;
+  align-items: center;
+  ${'' /* background-color: white; */}
+
+  p {
+    color: white;
+  }
 `;
