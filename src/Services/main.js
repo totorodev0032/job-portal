@@ -93,3 +93,34 @@ export const getOneJobApplicants = (value, token) => {
       });
   });
 };
+
+export const postJob = (value, token) => {
+  return new Promise((resolve, reject) => {
+    fetch(BASEURL + '/jobs/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: token,
+      },
+      body: JSON.stringify(value),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        if (!data.success) {
+          if (data.errors) {
+            reject(data.errors[0].name);
+          } else if (data.message) {
+            reject(data.message);
+          } else {
+            reject('Unexpected error occured');
+          }
+        } else {
+          resolve(data);
+        }
+      })
+      .catch((error) => {
+        reject(error);
+      });
+  });
+};

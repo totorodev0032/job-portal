@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Login from '../Login/Login';
+import PostJob from '../PostJob/PostJob';
 import Register from '../Register/Register';
 import ResetPassword from '../ResetPassword/ResetPassword';
 import UserEmail from '../ResetPassword/UserEmail';
@@ -18,6 +19,8 @@ const AuthLayout = ({ value }) => {
             <UserEmail />
           ) : value == 'Email' ? (
             <ResetPassword />
+          ) : value == 'postjob' ? (
+            <PostJob />
           ) : null}
         </AuthLayoutContainer>
       </AuthLayoutWrapper>
