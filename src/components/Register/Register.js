@@ -138,7 +138,7 @@ const Register = () => {
             />
 
             <ButtonWrapper>
-              <Button type="submit">Login</Button>
+              <Button type="submit">Register</Button>
             </ButtonWrapper>
           </FormContainer>
 

@@ -3,6 +3,7 @@ import { useHistory } from 'react-router';
 import { isEmpty } from 'lodash';
 import { login } from '../../Services/auth';
 import styled from 'styled-components';
+import { sendPasswordTokenBody } from '../../Services/reset';
 
 const ResetPassword = () => {
   const [userPassword, setUserPassword] = React.useState('');
@@ -10,25 +11,28 @@ const ResetPassword = () => {
 
   const history = useHistory();
   const [errors, setError] = React.useState({
-    emailError: '',
     passwordError: '',
+    confirmPasswordError: '',
   });
+
   const userData = JSON.parse(sessionStorage.getItem('userData'));
-  if (userData) {
-    history.push('/dashboard');
-  }
+
   const handleSubmit = (event) => {
-    var loginData = {
+    var resetData = {
       password: userPassword,
       confirmPassword: userConfirmPassword,
     };
     const errorObj = {};
     if (!userPassword) {
-      errorObj.emailError = 'Password is required';
+      errorObj.passwordError = 'Password is required';
+    }
+
+    if (!userConfirmPassword) {
+      errorObj.confirmPasswordError = 'Password is required';
     }
 
     if (isEmpty(errorObj)) {
-      login(loginData)
+      sendPasswordTokenBody(resetData, userData.token)
         .then((data) => {
           alert('success');
           sessionStorage.setItem('userData', JSON.stringify(data.data));

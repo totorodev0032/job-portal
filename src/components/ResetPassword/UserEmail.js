@@ -1,22 +1,19 @@
 import React from 'react';
 import { useHistory } from 'react-router';
 import { isEmpty } from 'lodash';
-import { login } from '../../Services/auth';
 import styled from 'styled-components';
+import { getPasswordResetToken } from '../../Services/reset';
 
 const UserEmail = () => {
   const [userEmail, setUserEmail] = React.useState('');
   const history = useHistory();
   const [errors, setError] = React.useState({
     emailError: '',
-    passwordError: '',
   });
   const userData = JSON.parse(sessionStorage.getItem('userData'));
-  if (userData) {
-    history.push('/dashboard');
-  }
+
   const handleSubmit = (event) => {
-    var loginData = {
+    var emailData = {
       email: userEmail,
     };
     const errorObj = {};
@@ -27,7 +24,7 @@ const UserEmail = () => {
     }
 
     if (isEmpty(errorObj)) {
-      login(loginData)
+      getPasswordResetToken(emailData)
         .then((data) => {
           alert('success');
           sessionStorage.setItem('userData', JSON.stringify(data.data));

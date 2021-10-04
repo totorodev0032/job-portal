@@ -75,6 +75,19 @@ const Login = () => {
               placeholder="Enter Your Password"
               onChange={(event) => setUserPassword(event.target.value)}
             />
+            <Link
+              to="/resetPassword"
+              style={{
+                color: 'black',
+                marginLeft: 'auto',
+                marginTop: '-15px',
+                textDecoration: 'none',
+                cursor: 'pointer',
+              }}
+            >
+              <p>Forgot your Password ?</p>
+            </Link>
+
             {errors.passwordError ? (
               <ErrorText>{errors.passwordError}</ErrorText>
             ) : null}
