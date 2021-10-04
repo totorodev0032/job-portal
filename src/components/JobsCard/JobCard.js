@@ -55,6 +55,10 @@ const CardUp = styled.div`
     font-weight: 400;
     padding: 0 10px 0 20px;
     margin-bottom: 0;
+
+    height: 50px;
+    overflow: hidden;
+    margin-top: 10px;
   }
 `;
 

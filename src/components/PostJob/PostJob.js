@@ -75,7 +75,7 @@ const PostJob = () => {
               className={errors.locationError ? 'error' : null}
               type="text"
               value={location}
-              placeholder="Enter Your Email"
+              placeholder="Enter Location"
               onChange={(event) => setLocation(event.target.value)}
             />
             {errors.descriptionError ? (

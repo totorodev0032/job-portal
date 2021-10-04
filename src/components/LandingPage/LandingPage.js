@@ -54,6 +54,7 @@ const LandingContainer = styled.div`
   @media (max-width: 496px) {
     flex-direction: column;
     padding-bottom: 5%;
+    padding-top: 5%;
   }
 `;
 
@@ -82,6 +83,8 @@ const Heading = styled.h3`
 
   @media (max-width: 496px) {
     padding: 0 10% 0 20px;
+    font-size: 45px;
+    margin-bottom: 25px;
   }
 `;
 

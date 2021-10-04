@@ -15,3 +15,8 @@ code {
 .error {
   outline: 1px solid #ff333380;
 }
+
+.clamp {
+  -webkit-line-clamp: 2;
+  font-size: 13px;
+}

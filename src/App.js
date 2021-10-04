@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import AuthLayout from './components/AuthLayout/AuthLayout';
+import Company from './components/Companies/Company';
 import Dashboard from './components/Dashboard/Dashboard';
 import Header from './components/Header/Header';
 import HeaderEmpty from './components/Header/HeaderEmpty';
@@ -17,6 +18,7 @@ function App() {
             <Header />
             <LandingPage />
             <Why />
+            <Company />
           </Route>
 
           <Route path="/login">
