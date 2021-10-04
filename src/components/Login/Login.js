@@ -3,6 +3,7 @@ import { useHistory } from 'react-router';
 import styled from 'styled-components';
 import { login } from '../../Services/main';
 import { isEmpty } from 'lodash';
+import { Link } from 'react-router-dom';
 
 const Login = () => {
   const [userEmail, setUserEmail] = React.useState('');
@@ -79,6 +80,12 @@ const Login = () => {
               <Button type="submit">Login</Button>
             </ButtonWrapper>
           </FormContainer>
+          <LoginFooter>
+            Already registered?
+            <Link to="/register" className="link">
+              Register
+            </Link>
+          </LoginFooter>
         </LoginContainer>
       </LoginWrapper>
     </>
@@ -97,6 +104,10 @@ const LoginWrapper = styled.div`
   margin-top: 30%;
   justify-content: center;
   align-items: center;
+
+  .link {
+    text-decoration: none;
+  }
 `;
 
 const LoginContainer = styled.div`
@@ -170,4 +181,11 @@ const ErrorText = styled.p`
   font-weight: 400;
   margin: -10px 0 5px auto;
   color: red;
+`;
+
+const LoginFooter = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  margin-top: 20px;
 `;
