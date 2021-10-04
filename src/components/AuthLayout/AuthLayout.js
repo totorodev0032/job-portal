@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import Header from '../Header/Header';
 import Login from '../Login/Login';
 import PostJob from '../PostJob/PostJob';
 import Register from '../Register/Register';

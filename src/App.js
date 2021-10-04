@@ -2,11 +2,13 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import AuthLayout from './components/AuthLayout/AuthLayout';
 import Dashboard from './components/Dashboard/Dashboard';
 import Header from './components/Header/Header';
+import HeaderEmpty from './components/Header/HeaderEmpty';
 import LandingPage from './components/LandingPage/LandingPage';
 import Why from './components/WhyUs/Why';
 import PrivateRoute from './utils/PrivateRoute';
 
 function App() {
+  const userData = JSON.parse(sessionStorage.getItem('userData'));
   return (
     <>
       <Router>
@@ -18,22 +20,22 @@ function App() {
           </Route>
 
           <Route path="/login">
-            <Header />
+            <HeaderEmpty />
             <AuthLayout value="Login" />
           </Route>
 
           <Route path="/register">
-            <Header />
+            <HeaderEmpty />
             <AuthLayout value="Register" />
           </Route>
 
           <Route path="/resetPassword" exact>
-            <Header />
+            <HeaderEmpty />
             <AuthLayout value="Reset" />
           </Route>
 
           <Route path="/resetPassword/email">
-            <Header />
+            <HeaderEmpty />
             <AuthLayout value="Email" />
           </Route>
 

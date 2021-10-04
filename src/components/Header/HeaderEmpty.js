@@ -1,39 +1,23 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-
-import Drop from '../Dropdown/Dropdown';
-const Header = () => {
-  const userData = JSON.parse(sessionStorage.getItem('userData'));
+const HeaderEmpty = () => {
   return (
     <>
       <HeaderWrapper>
         <HeaderContainer>
-          <Link to={userData ? '/dashboard' : '/'} className="link">
+          <Link to="/" className="link">
             <Heading>
               My<span className="blue">Jobs</span>
             </Heading>
           </Link>
-
-          {userData ? (
-            <RightDiv>
-              <Link to="/postjob" className="link">
-                <p>Post a Job</p>
-              </Link>
-              <Drop />
-            </RightDiv>
-          ) : (
-            <Button as={Link} className="link" to="/register">
-              Login/Signup
-            </Button>
-          )}
         </HeaderContainer>
       </HeaderWrapper>
     </>
   );
 };
 
-export default Header;
+export default HeaderEmpty;
 
 const HeaderWrapper = styled.div`
   display: flex;
@@ -49,11 +33,6 @@ const HeaderWrapper = styled.div`
 
   .link {
     text-decoration: none;
-  }
-
-  .link:hover {
-    text-decoration: none;
-    color: white;
   }
 `;
 

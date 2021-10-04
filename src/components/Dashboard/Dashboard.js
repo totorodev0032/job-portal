@@ -7,6 +7,8 @@ import JobBox from '../JobsCard/JobCard';
 import { getOneJobApplicants } from '../../Services/main';
 import { Modal } from 'react-bootstrap';
 import './style.css';
+import { FaAddressBook } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 const Dashboard = () => {
   const [show, setShow] = React.useState(false);
@@ -66,6 +68,21 @@ const Dashboard = () => {
               onAction={showApplicants}
             />
           ))}
+
+          {jobsData.message && (
+            <NoJobContainer>
+              <FaAddressBook style={{ fontSize: '60px', color: 'gray' }} />
+              <p>No Jobs Available</p>
+              <Button
+                as={Link}
+                to="/postjob"
+                style={{ textDecoration: 'none' }}
+                className="link"
+              >
+                Post a Job
+              </Button>
+            </NoJobContainer>
+          )}
         </JobCardContainer>
       </JobCardWrapper>
 
@@ -147,6 +164,15 @@ const DashboardWrapper = styled.div`
   );
   justify-content: center;
   align-items: center;
+
+  .link {
+    text-decoration: none;
+    color: white;
+  }
+
+  .link:hover {
+    color: white;
+  }
 `;
 
 const DashboardContainer = styled.div`
@@ -177,4 +203,28 @@ const JobCardContainer = styled.div`
   height: 100%;
   background: transparent;
   margin-top: -100px;
+`;
+
+const NoJobContainer = styled.div`
+  display: flex;
+  width: 70%;
+  height: 100%;
+  background: transparent;
+  justify-content: center;
+  align-items: center;
+  color: black;
+  flex-direction: column;
+  margin-left: 15%;
+`;
+
+const Button = styled.button`
+  display: flex;
+  border: none;
+  background: #43afff;
+  color: white;
+  width: 130px;
+  height: 35px;
+  border-radius: 5px;
+  justify-content: center;
+  align-items: center;
 `;
