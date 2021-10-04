@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router';
 import styled from 'styled-components';
-import { login } from '../../Services/main';
+import { login } from '../../Services/auth';
 import { isEmpty } from 'lodash';
 import { Link } from 'react-router-dom';
 import '../../index.css';

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useHistory } from 'react-router';
 import { isEmpty } from 'lodash';
-import { login } from '../../Services/main';
+import { login } from '../../Services/auth';
 import styled from 'styled-components';
 
 const ResetPassword = () => {

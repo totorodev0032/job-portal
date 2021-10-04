@@ -1,7 +1,7 @@
 import React from 'react';
 import { useHistory } from 'react-router';
 import { isEmpty } from 'lodash';
-import { register } from '../../Services/main';
+import { register } from '../../Services/auth';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import '../../index.css';
